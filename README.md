@@ -1,29 +1,17 @@
-# Welcome to your Lovable project
+# RadRAG AI — Frontend
 
-This project was built with [Lovable](https://lovable.dev).
+Research prototype UI for Multimodal RAG for Radiology Reports. Not for clinical use.
 
-## Build with Lovable
-
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+## Setup
 ```
+bun install
+bun run dev
+```
+## Connecting the FastAPI backend
+Create `.env` with `VITE_API_BASE_URL=http://localhost:8000`. All calls live in `src/services/api.ts`:
+- `POST /api/analyze` (multipart: case_id, image, clinical_context)
+- `GET /api/cases`
+- `GET /api/cases/{id}/result`
+- planned: `GET /api/retrieval/{id}`, `GET /api/evaluation`
 
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+Response shapes: `src/services/types.ts`. Without a backend the app shows only data labeled "Mock data".
