@@ -4,7 +4,7 @@
 import { MOCK_CASES, MOCK_RESULT } from "./mockData";
 import type { AnalysisRequest, AnalysisResult, CaseSummary } from "./types";
 
-const BASE_URL = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.replace(/\/$/, "");
+const BASE_URL = (import.meta.env["VITE_API_BASE_URL"] as string | undefined)?.replace(/\/$/, "");
 
 export const isBackendConfigured = () => Boolean(BASE_URL);
 
