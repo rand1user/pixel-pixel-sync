@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as CasesRouteImport } from './routes/cases'
+import { Route as EvaluationRouteImport } from './routes/evaluation'
+import { Route as EvidenceRouteImport } from './routes/evidence'
+import { Route as AnalysisNewRouteImport } from './routes/analysis.new'
+import { Route as ResultsCaseIdRouteImport } from './routes/results.$caseId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CasesRoute = CasesRouteImport.update({
+  id: '/cases',
+  path: '/cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvaluationRoute = EvaluationRouteImport.update({
+  id: '/evaluation',
+  path: '/evaluation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvidenceRoute = EvidenceRouteImport.update({
+  id: '/evidence',
+  path: '/evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalysisNewRoute = AnalysisNewRouteImport.update({
+  id: '/analysis/new',
+  path: '/analysis/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResultsCaseIdRoute = ResultsCaseIdRouteImport.update({
+  id: '/results/$caseId',
+  path: '/results/$caseId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cases': typeof CasesRoute
+  '/evaluation': typeof EvaluationRoute
+  '/evidence': typeof EvidenceRoute
+  '/analysis/new': typeof AnalysisNewRoute
+  '/results/$caseId': typeof ResultsCaseIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cases': typeof CasesRoute
+  '/evaluation': typeof EvaluationRoute
+  '/evidence': typeof EvidenceRoute
+  '/analysis/new': typeof AnalysisNewRoute
+  '/results/$caseId': typeof ResultsCaseIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cases': typeof CasesRoute
+  '/evaluation': typeof EvaluationRoute
+  '/evidence': typeof EvidenceRoute
+  '/analysis/new': typeof AnalysisNewRoute
+  '/results/$caseId': typeof ResultsCaseIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/cases'
+    | '/evaluation'
+    | '/evidence'
+    | '/analysis/new'
+    | '/results/$caseId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/cases'
+    | '/evaluation'
+    | '/evidence'
+    | '/analysis/new'
+    | '/results/$caseId'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/cases'
+    | '/evaluation'
+    | '/evidence'
+    | '/analysis/new'
+    | '/results/$caseId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CasesRoute: typeof CasesRoute
+  EvaluationRoute: typeof EvaluationRoute
+  EvidenceRoute: typeof EvidenceRoute
+  AnalysisNewRoute: typeof AnalysisNewRoute
+  ResultsCaseIdRoute: typeof ResultsCaseIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cases': {
+      id: '/cases'
+      path: '/cases'
+      fullPath: '/cases'
+      preLoaderRoute: typeof CasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evaluation': {
+      id: '/evaluation'
+      path: '/evaluation'
+      fullPath: '/evaluation'
+      preLoaderRoute: typeof EvaluationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evidence': {
+      id: '/evidence'
+      path: '/evidence'
+      fullPath: '/evidence'
+      preLoaderRoute: typeof EvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analysis/new': {
+      id: '/analysis/new'
+      path: '/analysis/new'
+      fullPath: '/analysis/new'
+      preLoaderRoute: typeof AnalysisNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/results/$caseId': {
+      id: '/results/$caseId'
+      path: '/results/$caseId'
+      fullPath: '/results/$caseId'
+      preLoaderRoute: typeof ResultsCaseIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CasesRoute: CasesRoute,
+  EvaluationRoute: EvaluationRoute,
+  EvidenceRoute: EvidenceRoute,
+  AnalysisNewRoute: AnalysisNewRoute,
+  ResultsCaseIdRoute: ResultsCaseIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
