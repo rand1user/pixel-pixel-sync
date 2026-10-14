@@ -64,5 +64,5 @@ export interface AnalysisResult {
 export interface AnalysisRequest {
   case_id: string;
   image: File;
-  clinical_context?: string;
+  clinical_context?: string | undefined;
 }
